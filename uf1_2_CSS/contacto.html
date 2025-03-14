@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uf1-2-CSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="title">UF1-2-CSS</h1>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+    
+    <form>
+        <fieldset>
+            <legend><strong>Información personal</strong></legend>
+            <label for="nombreUsuario">Nombre</label><br>
+            <input type="text" name="nombreUsuario" id="nombreUsuario" required><br><br>
+            <label for="apellido">Apellidos</label><br>
+            <input type="text" name="apellido" id="apellido" required><br><br>
+            <label for="fechaNac">Fecha de nacimiento</label><br>
+            <input type="date" name="fechaNac" id="fechaNac" required><br><br>
+            Género:
+            <br>
+            <input type="radio" name="genero" id="masculino" required>
+            <label for="masculino">Masculino</label><br>
+            <input type="radio" name="genero" id="femenino" required>
+            <label for="femenino">Femenino</label><br>
+            <input type="radio" name="genero" id="otro" required>
+            <label for="otro">Otro</label><br>
+        </fieldset>
+        <fieldset>
+            <legend><strong>Información de contacto</strong></legend>
+            <label for="email">Correo electronico:</label><br>
+            <input type="email" id="email" name="email" placeholder="correo@gmail.com"required><br><br>
+            <label for="tel">Telefono:</label><br>
+            <input type="tel" id="tel" name="tel" placeholder="000-00-00-00" required><br><br>
+            <label for="direccion">Dirección</label><br>
+            <textarea id="direccion" rows="4" cols="50"></textarea><br>
+
+        </fieldset><br>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
