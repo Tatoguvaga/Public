@@ -126,6 +126,10 @@ nav > button{
 }
 /*movil vertical*/
 @media (max-width: 768px) {
+    header {
+        background-size: 70px 70px;
+    }
+    
     #title {
         font-size: 25px;
     }
