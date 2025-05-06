@@ -1,0 +1,238 @@
+/*General */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 26px;
+  min-height: 100vh;
+}
+
+/*la cabecera */
+header {
+  width: 100%;
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+}
+
+nav {
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul { 
+  display: flex; 
+  list-style: none; 
+  gap: 1rem; 
+  padding: 0; 
+  margin: 0; 
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+}
+
+nav li {
+  padding: 0.5rem; 
+  background-color: #444;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav li:hover {
+  background-color: #888;
+}
+
+main {
+  width: 100%;
+  display: flex; 
+  flex: 1;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  margin: 0 auto; /* Centra el contenido */
+}
+
+p.card-text{
+  font-weight: bold;
+  text-shadow: 3px 1px 6px rgba(0, 0, 0, 1); /* Sombra de texto */
+}
+
+section {
+  padding: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  max-width: 500px; /* Limita el ancho máximo */
+  margin: 2rem ; /* Centra el formulario horizontalmente */
+  padding: 4rem; /* Añade espacio interno */
+  border: 1px solid #ccc; /* Añade un borde */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Fondo claro */
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+button {
+  padding: 0.7rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* para los iconos de las redes sociales */
+.social-icons {
+  display: flex; 
+  gap: 10px; 
+  align-items: center;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+  color: white;
+  margin-top: auto;
+  width: 100%;
+  
+}
+
+
+/* Móviles (Vertical) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /*Reducimos el tamaño de la fuente para móviles*/
+   }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+  }
+
+  nav li {
+    width: 30%;
+    text-align: center; /* Centra el contenido del menú */
+
+  }
+
+  main {
+    flex-direction: column; /* Asegura que los elementos se apilen */
+    height: 100vh; /* Mantiene la altura completa de la pantalla */
+    background-size: cover;
+  }
+  
+  form {
+    width: auto; /* Reduce el ancho para adaptarse a pantallas pequeñas */
+    padding: 4rem; /* Reduce el espacio interno */
+}
+
+button {
+    font-size: 16px; /* Ajusta el tamaño del botón */
+    padding: auto; /* Reduce el relleno del botón */
+}
+
+
+}
+
+
+/* Móviles (Horizontal) */
+@media (min-width: 481px) and (max-width: 767px) {
+
+  body {
+    font-size: 16px; /* Ajusta el tamaño de fuente */
+  }
+
+  nav ul {
+    flex-direction: row; /* Mantén el menú en fila */
+    gap: 1rem;
+  }
+
+  main {
+    flex-wrap: ; /* Mantén el diseño en fila */
+    height: 100%; /* Permite que el contenido crezca dinámicamente */
+    padding: 1rem; /* Añade espacio interno */
+  }
+
+  .mainInicio {
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    min-height: 150vh; /* Asegura que ocupe toda la altura de la pantalla */
+  }
+
+  article {
+    padding: auto; /* Ajusta el espacio interno del artículo */
+  }
+
+  article p {
+    height: auto;
+  }
+
+  footer {
+    padding: 1rem;
+    font-size: 14px; /* Reduce el tamaño del texto en el footer */
+   }
+
+}
+
+/* Tabletas (Vertical) */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  body {
+    font-size: 20px; /* Ajusta el tamaño de fuente */
+  }
+
+  main {
+    flex-direction: row; /* Mantén el diseño en fila */
+    height: auto;
+  }
+
+
+}
+
+/* Tabletas (Horizontal) */
+@media (min-width: 1025px) and (max-width: 1279px) {
+
+  body {
+    font-size: 22px; /* Ajusta el tamaño de fuente */
+  }
+
+  main {
+    flex-direction: row; /* Mantén el diseño en fila */
+  }
+}
+
+/* Desktops Muy Grandes */
+@media (min-width: 1920px) {
+  body {
+    font-size: 26px; /* Mantén el tamaño de fuente grande */
+  }
+
+  main {
+    margin: 0 auto; /* Centra el contenido */
+  }
+
+  
+
+}
