@@ -2,8 +2,8 @@
 html, body {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  margin: auto;
+  padding: auto;
   display: flex;
   flex-direction: column;
 }
@@ -16,41 +16,47 @@ body {
 
 /*la cabecera */
 header {
-  width: 100%;
+  width: auto;
   background: #222;
   color: #fff;
   padding: 1rem;
 }
 
-nav {
-  justify-content: space-between; 
-  align-items: center; 
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-}
-
-nav ul { 
+nav ul {
   display: flex; 
-  list-style: none; 
-  gap: 1rem; 
-  padding: 0; 
-  margin: 0; 
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* espacio entre botones */
+  list-style: none;
+  padding: 5px;
+  margin: auto;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  
 }
 
-nav li {
-  padding: 0.5rem; 
-  background-color: #444;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+nav ul li a {
+  display: inline-block;
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
 }
 
-nav li:hover {
-  background-color: #888;
+nav ul li a:hover {
+  background-color: transparent;
 }
+
+nav ul li a:active {
+  transform: scale(0.95);
+  outline: none;
+}
+
 
 main {
   width: 100%;
@@ -117,6 +123,55 @@ footer {
   
 }
 
+/* CSS Sobre mi */
+.sobre_mi {
+  text-align: justify;
+  height: 100vh;
+}
+
+.etapa_militar, .transicion_desarrollo, .vida_cristiana, .proposito_hoy {
+  margin: 1rem;
+  display: flex; 
+  flex-direction: column; 
+  padding: 1rem; 
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 6px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.etapa_militar h2, .transicion_desarrollo h2, .vida_cristiana h2, .proposito_hoy h2 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 1rem;
+}
+
+.text_izq {
+  flex-direction: wrap; /* Asegura que los elementos se apilen */
+  float: left;
+  width: 70%;
+}
+
+.text_der {
+  flex-direction: wrap; /* Asegura que los elementos se apilen */
+  float: right;
+  width: 70%;
+}
+
+img {
+  border-radius: 10px;
+  margin: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* Móviles (Vertical) */
 @media (max-width: 480px) {
@@ -152,8 +207,16 @@ button {
     padding: auto; /* Reduce el relleno del botón */
 }
 
+/* CSS Sobre mi */
+img {
+    width: 120px; /* Asegura que la imagen ocupe todo el ancho disponible */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
 
+  
 }
+
+
 
 
 /* Móviles (Horizontal) */
@@ -169,7 +232,7 @@ button {
   }
 
   main {
-    flex-wrap: ; /* Mantén el diseño en fila */
+    flex-wrap: wrap; /* Mantén el diseño en fila */
     height: 100%; /* Permite que el contenido crezca dinámicamente */
     padding: 1rem; /* Añade espacio interno */
   }
