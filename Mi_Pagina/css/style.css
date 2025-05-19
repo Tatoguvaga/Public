@@ -251,7 +251,7 @@ img {
   body {
     font-size: 14px; /* Ajusta el tamaño de fuente */
     width: 100vw; /* Asegura que el ancho ocupe toda la pantalla */
-    height: 100vh; /* Asegura que la altura ocupe toda la pantalla */
+    height: 100dvh; /* Asegura que la altura ocupe toda la pantalla */
     overflow-x: hidden; /* Evita el scroll horizontal */
   }
 
@@ -316,39 +316,48 @@ img {
 
   body {
     font-size: 16px; /* Ajusta el tamaño de fuente */
+    height: 100dvh; /* Ocupa toda la altura visible */
+    overflow-x: hidden; /* Evita el scroll horizontal */
+    box-sizing: border-box;
   }
 
   nav ul {
-    flex-direction: row; /* Mantén el menú en fila */
-    gap: 1rem;
+    flex-direction: row; /* Menú en fila */
+    gap: 1rem; /* Espacio entre elementos */
   }
 
   main {
-    flex-wrap: wrap; /* Mantén el diseño en fila */
-    height: 100%; /* Permite que el contenido crezca dinámicamente */
-    padding: 1rem; /* Añade espacio interno */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas */
+    height: auto; /* Altura dinámica */
+    padding: 1rem; /* Espacio interno */
   }
 
   .mainInicio {
     background-size: cover;
     width: 100%;
-    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    min-height: 100vh; /* Ocupa toda la pantalla */
   }
 
   article {
-    padding: auto; /* Ajusta el espacio interno del artículo */
+    padding: 1rem; /* Espacio interno adecuado */
   }
 
   article p {
     height: auto;
+    line-height: 1.5; /* Mejora la legibilidad */
   }
 
   footer {
-    font-size: 14px; /* Reduce el tamaño del texto en el footer */
-    width: 100%; /* Asegura que el footer ocupe todo el ancho */
-    position: absolute; /* Mantiene el footer al final */
-    bottom: 0; /* Asegura que esté al final de la página */
-   }
+    font-size: 12px; /* Texto más pequeño */
+    width: 100%; /* Ocupa todo el ancho */
+    position: fixed; /* Fijado al fondo */
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    text-align: center; /* Centra el contenido del footer */
+    background-color: #f9f9f9; /* Opcional: fondo claro para mejor lectura */
+    padding: 8px 0;
+  }
 
 }
 

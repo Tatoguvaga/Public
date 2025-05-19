@@ -24,10 +24,10 @@
 
     <section id="contacto">
         <h2>Contacto</h2>
-        <form>
-            <input type="text" placeholder="Tu nombre" required />
-            <input type="email" placeholder="Tu correo" required />
-            <textarea placeholder="Tu mensaje" required></textarea>
+        <form id="form" action="../Mi_Pagina/php/confirmacion.php" method="POST" enctype="multipart/form-data">
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+            <input type="email" name="email" placeholder="Tu correo" required />
+            <textarea name="mensaje" placeholder="Escribe el mensaje aqui..." required></textarea>
             <button type="submit">Enviar</button>
         </form>
     </section>
