@@ -1,74 +1,59 @@
-/*General */
-html, body {
-  max-height: 100%;
-  max-width: 100%;
-  margin: auto;
-  padding: auto;
-  display: flex;
-  flex-direction: column;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Estilo general */
 body {
-  font-family: Arial, sans-serif;
-  font-size: 26px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
 }
 
-/*la cabecera */
 header {
-  min-width: 100%;
-  background: #222;
-  color: #fff;
-  padding: 1rem;
+  background-color: #007bff;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
 }
-/*Los items del menú */
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+}
+
+/* Menú de navegación */
 nav ul {
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* espacio entre botones */
   list-style: none;
-  padding: 5px; 
-  margin: 0; 
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-nav ul li a {
-  display: inline-block; 
-  background-color: rgb(5, 6, 45);
-  padding: 16px 24px;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 18px; 
+nav li a {
+  color: white;
   text-decoration: none;
-  white-space: pre wrap; 
-  transition: all 0.3s ease;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: background 0.3s;
+  border-radius: 8px;
 }
 
-nav ul li a:hover {
-  background-color: transparent;
+nav li a:hover {
+  background-color: #0056b3;
 }
 
-nav ul li a:active {
-  transform: scale(0.95);
-  outline: none;
-}
-
-
-main {
-  max-width: 100vh;
-  max-height: 100vh;
-  display: flex; 
-  flex: 1;
-  padding: 1rem;
-  margin: 0 auto; /* Centra el contenido */
-}
-
+/* Estilo principal */
 .mainInicio {
+  padding: 40px 20px;
+  text-align: center;
   max-width: 100%;
   max-height: 100%; 
-  --s: 84px;
+    --s: 84px;
   --c1: #ffffffE6;
   --c2: #e6e6e6E6;
   --c3: #c8c8c8E6;
@@ -106,298 +91,90 @@ main {
       var(--c2) 0 240deg,
       var(--c3) 0
     );
+    
   background-size: calc(var(--s) * 1.732) var(--s);
 }
 
-p.card-text{
-  font-weight: bold;
-  text-shadow: 3px 1px 6px rgba(0, 0, 0, 1); /* Sombra de texto */
-  
+.bienvenido-card {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 30px;
 }
 
-.card_1 {
-  transform: rotate(5deg);
-  
+/* Tarjetas */
+.card {
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s;
 }
 
-
-.card_2 {
-  transform: rotate(357deg);
+.card:hover {
+  transform: scale(1.02);
 }
 
-.card_3 {
-  
+.card p {
+  margin: 0;
+  font-size: 1rem;
 }
 
-section {
-  padding: 0;
-  max-width: 100%;
-  max-height: 100%;
-  
-}
-
-form {
+.d-flex {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  max-width: 500px; /* Limita el ancho máximo */
-  margin: 2rem ; /* Centra el formulario horizontalmente */
-  padding: 4rem; /* Añade espacio interno */
-  border: 1px solid #ccc; /* Añade un borde */
-  border-radius: 8px; /* Bordes redondeados */
-  background-color: #f9f9f9; /* Fondo claro */
 }
 
-input,
-textarea {
-  padding: 0.5rem;
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.gap-4 {
+  gap: 20px;
+}
+
+.w-100 {
   width: 100%;
-  max-width: 500px;
 }
 
-button {
-  padding: 0.7rem;
-  background-color: #444;
-  color: white;
-  border: none;
-  cursor: pointer;
+.mt-4 {
+  margin-top: 1.5rem;
 }
 
-/* para los iconos de las redes sociales */
-.social-icons, a {
-  display: flex; 
-  align-items: center;
+.mb-5 {
+  margin-bottom: 3rem;
 }
 
+/* Íconos sociales */
+.social-icons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a img {
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2);
+}
+
+/* Footer */
 footer {
+  background-color: #343a40;
+  color: #fff;
   text-align: center;
-  padding: 1rem;
-  background: #222;
-  color: white;
-  margin-top: auto; /* Asegura que el footer esté al final */
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  padding: 20px 10px;
+  margin-top: 40px;
+  font-size: 0.9rem;
 }
 
-
-/* CSS Sobre mi */
-.sobre_mi {
-  text-align: justify;
-  max-height: 100vh;
-
-}
-
-.etapa_militar, .etapa_transicion, .etapa_cristiana, .proposito_hoy {
-  margin: 1rem;
-  display: flex; 
-  flex-direction: column; 
-  padding: 1rem; 
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.etapa_militar h2, .transicion_desarrollo h2, .etapa_cristiana h2, .proposito_hoy h2 {
-  text-align: center;
-  font-size: 26px;
-  margin-bottom: 1rem;
-}
-
-.text_izq {
-  flex-direction: wrap; /* Asegura que los elementos se apilen */
-  float: left;
-  width: 70%;
-}
-
-.text_der {
-  flex-direction: wrap; /* Asegura que los elementos se apilen */
-  float: right;
-  width: 70%;
-}
-
-.etapa_militar {
-  background: linear-gradient(254deg, #7300ff 0%, #ffffff 100%);
-  box-shadow: -6px 10px 10px 1px #000000;
-}
-
-.etapa_transicion {
-  background: linear-gradient(114deg, #001eff 0%, #ffffff 100%);
-  box-shadow: 6px 8px 10px 1px #000000;
-}
-
-.etapa_cristiana {
-  background: linear-gradient(229deg, #00b3ff 0%, #ffffff 100%);
-  box-shadow: -6px 10px 10px 1px #000000;
-}
-
-.proposito_hoy {
-  background: linear-gradient(0deg, #614638 0%, #ffffff 100%);
-  box-shadow: 1px 10px 10px 1px #000000;
-}
-img {
-  border-radius: 10px;
-  margin: 1.5rem;
-}
-
-
-
-
-
-/* Móviles (Vertical) */
-@media (max-width: 480px) {
-  body {
-    font-size: 14px; /* Ajusta el tamaño de fuente */
-    width: 100vw; /* Asegura que el ancho ocupe toda la pantalla */
-    height: 100dvh; /* Asegura que la altura ocupe toda la pantalla */
-    overflow-x: hidden; /* Evita el scroll horizontal */
-  }
-
-  nav ul  {
-    display: flex; /* Asegura que los elementos internos se alineen en fila */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    gap: 0.2rem; /* Espacio entre elementos internos */
-    max-width: 100vh; /* Ajusta el ancho automáticamente */
-    padding: 0.5rem 1rem; /* Ajusta el espacio interno */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
-  }
-
-  nav ul li a {
-    padding: 0.5rem 1rem; /* Ajusta el espacio interno */
-    font-size: 14px; /* Ajusta el tamaño de fuente */
-    text-align: center; /* Centra el texto */
-    white-space: normal; /* Permite que el texto se ajuste a varias líneas */
-  }
-
-  main {
-    flex-direction: column; /* Cambia a columna para móviles */
-    min-height: 100vh; /* Permite que el contenido crezca dinámicamente */
-    padding: 1rem; /* Añade espacio interno */
-  }
-
-
-  article {
-    padding: auto; /* Ajusta el espacio interno del artículo */
-  }
-
-  article p {
-    height: auto;
-  }
-
-  footer {
-    font-size: 12px; /* Reduce el tamaño del texto en el footer */
-    width: 100%; /* Asegura que el footer ocupe todo el ancho */
-    position: fixed; /* Fija el footer al final de la ventana */
-    bottom: 0; /* Asegura que esté al final de la página */
-    left: 0; /* Asegura que esté alineado a la izquierda */
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-  }
-
-  /*CSS sobre mi*/
-  .sobre_mi {
-    text-align: justify;
-    max-height: 100vh;
-    padding: 1rem; /* Añade espacio interno */
-    display: flex;
-    flex-direction: column;
-  }
- 
-
-
-
-
-
-/* Móviles (Horizontal) */
-@media (min-width: 481px) and (max-width: 767px) {
-
-  body {
-    font-size: 16px; /* Ajusta el tamaño de fuente */
-    height: 100dvh; /* Ocupa toda la altura visible */
-    overflow-x: hidden; /* Evita el scroll horizontal */
-    box-sizing: border-box;
-  }
-
-  nav ul {
-    flex-direction: row; /* Menú en fila */
-    gap: 1rem; /* Espacio entre elementos */
-  }
-
-  main {
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas */
-    height: auto; /* Altura dinámica */
-    padding: 1rem; /* Espacio interno */
-  }
-
-  .mainInicio {
-    background-size: cover;
-    width: 100%;
-    min-height: 100vh; /* Ocupa toda la pantalla */
-  }
-
-  article {
-    padding: 1rem; /* Espacio interno adecuado */
-  }
-
-  article p {
-    height: auto;
-    line-height: 1.5; /* Mejora la legibilidad */
-  }
-
-  footer {
-    font-size: 12px; /* Texto más pequeño */
-    width: 100%; /* Ocupa todo el ancho */
-    position: fixed; /* Fijado al fondo */
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    text-align: center; /* Centra el contenido del footer */
-    background-color: #f9f9f9; /* Opcional: fondo claro para mejor lectura */
-    padding: 8px 0;
-  }
-
-}
-
-/* Tabletas (Vertical) */
-@media (min-width: 768px) and (max-width: 1024px) {
-
-  body {
-    font-size: 20px; /* Ajusta el tamaño de fuente */
-  }
-
-  main {
-    flex-direction: row; /* Mantén el diseño en fila */
-    height: auto;
-  }
-
-
-}
-
-/* Tabletas (Horizontal) */
-@media (min-width: 1025px) and (max-width: 1279px) {
-
-  body {
-    font-size: 22px; /* Ajusta el tamaño de fuente */
-  }
-
-  main {
-    flex-direction: row; /* Mantén el diseño en fila */
-  }
-}
-
-/* Desktops Muy Grandes */
-@media (min-width: 1920px) {
-  body {
-    font-size: 26px; /* Mantén el tamaño de fuente grande */
-  }
-
-  main {
-    margin: 0 auto; /* Centra el contenido */
-  }
-
-  
-
+footer em {
+  font-style: italic;
 }

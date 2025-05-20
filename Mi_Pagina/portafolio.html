@@ -6,25 +6,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gustavo | Desarrollador & Blog Personal</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .portafolio-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .section-description {
+            font-size: 1rem;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <h1>Gustavo Varelas</h1>
-		<nav>
-			<ul>
-				<li><a href="index.html"><span class="text">Inicio</a></span>
-				<li><a href="sobreMi.html"><span class="text" >Sobre mí</a></span>
-				<li><a href="#"><span class="text">Portafolio</a></span>
-				<li><a href="blog.html"><span class="text" >Blog</a></span>
-				<li><a href="contacto.html"><span class="text" >Contacto</a></span>
-			</ul>
-		</nav>
+        <nav>
+            <ul>
+                <li><a href="index.html"><span class="text">Inicio</a></span>
+                <li><a href="sobreMi.html"><span class="text">Sobre mí</a></span>
+                <li><a href="#"><span class="text">Portafolio</a></span>
+                <li><a href="blog.html"><span class="text">Blog</a></span>
+                <li><a href="contacto.html"><span class="text">Contacto</a></span>
+            </ul>
+        </nav>
     </header>
 
-    <section id="portafolio">
-        <h2>Portafolio</h2>
-        <p>Aquí irán los proyectos destacados.</p>
+    <section id="portafolio" class="portafolio-section">
+        <h2 class="section-title">Portafolio</h2>
+        <p class="section-description">Aquí encontrarás algunos de los proyectos en los que he trabajado.</p>
+
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="img/proyecto1.jpg" alt="Proyecto 1">
+                <h3>Nombre del Proyecto 1</h3>
+                <p>Descripción breve del proyecto. ¿Qué hace? ¿Qué tecnologías usaste?</p>
+                <a href="#" class="btn">Ver más</a>
+            </div>
+
+            <div class="project-card">
+                <img src="img/proyecto2.jpg" alt="Proyecto 2">
+                <h3>Nombre del Proyecto 2</h3>
+                <p>Otro ejemplo de proyecto con impacto. Explica brevemente su funcionalidad.</p>
+                <a href="#" class="btn">Ver más</a>
+            </div>
+
+            <!-- Puedes duplicar este bloque para más proyectos -->
+        </div>
     </section>
 
     <footer>

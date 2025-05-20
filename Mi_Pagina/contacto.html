@@ -6,20 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gustavo | Desarrollador & Blog Personal</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sección de contacto */
+        #contacto {
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #contacto h2 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: #007bff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        footer em {
+            font-style: italic;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <h1>Gustavo Varelas</h1>
-		<nav>
-			<ul>
-				<li><a href="index.html"><span class="text">Inicio</a></span>
-				<li><a href="sobreMi.html"><span class="text" >Sobre mí</a></span>
-				<li><a href="portafolio.html"><span class="text">Portafolio</a></span>
-				<li><a href="blog.html"><span class="text" >Blog</a></span>
-				<li><a href="#"><span class="text" >Contacto</a></span>
-			</ul>
-		</nav>
+        <nav>
+            <ul>
+                <li><a href="index.html"><span class="text">Inicio</a></span>
+                <li><a href="sobreMi.html"><span class="text">Sobre mí</a></span>
+                <li><a href="portafolio.html"><span class="text">Portafolio</a></span>
+                <li><a href="blog.html"><span class="text">Blog</a></span>
+                <li><a href="#"><span class="text">Contacto</a></span>
+            </ul>
+        </nav>
     </header>
 
     <section id="contacto">
@@ -31,7 +102,7 @@
             <button type="submit">Enviar</button>
         </form>
     </section>
-    
+
     <footer>
         <p>&copy; 2025 Gustavo. <em>Llámame, y yo te responderé. Jeremías 33:3 </em></p>
     </footer>
