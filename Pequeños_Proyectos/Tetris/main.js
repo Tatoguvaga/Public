@@ -190,8 +190,45 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-document.addEventListener('touchstart', function(e) {
-    if (e.target.tagName === 'BUTTON') {
-        e.preventDefault();
+//Para los movimientos tactiles desde el movil
+let touchStartX = null;
+let touchStartY = null;
+let touchEndX = null;
+let touchEndY = null;
+
+canvas.addEventListener("touchstart", function (e) {
+    const touch = e.changedTouches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+}, false);
+
+canvas.addEventListener("touchend", function (e) {
+    const touch = e.changedTouches[0];
+    touchEndX = touch.clientX;
+    touchEndY = touch.clientY;
+    handleGesture();
+}, false);
+
+function handleGesture() {
+    const dx = touchEndX - touchStartX;
+    const dy = touchEndY - touchStartY;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+
+    const swipeThreshold = 30; // Sensibilidad del gesto
+
+    if (absDx < swipeThreshold && absDy < swipeThreshold) {
+        // Toque simple: rotar
+        playerRotate(1);
+    } else if (absDx > absDy) {
+        if (dx > 0) {
+            playerMove(1); // Derecha
+        } else {
+            playerMove(-1); // Izquierda
+        }
+    } else {
+        if (dy > 0) {
+            playerDrop(); // Hacia abajo
+        }
     }
-}, { passive: false });
+}
