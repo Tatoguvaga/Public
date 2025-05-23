@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button con Dialog</title>
+    <style>
+        /* Fondo oscuro semitransparente detrás del modal */
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo del modal */
+        dialog {
+            border: none;
+            border-radius: 12px;
+            padding: 2rem;
+            width: 300px;
+            max-width: 80%;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        /* Título del modal */
+        dialog h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        /* Texto del modal */
+        dialog p {
+            color: #666;
+            margin: 1rem 0;
+        }
+
+        /* Botón de cerrar */
+        dialog button {
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        dialog button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Botón de abrir modal */
+        #openDialog {
+            padding: 0.5rem 1rem;
+            margin: 2rem;
+            font-size: 1rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #openDialog:hover {
+            background-color: #218838;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="openDialog">
+        Abrir Modal
+    </button>
+
+    <dialog id="myDialog" closedby="any"><!--Poniendo closedby en any podemos salir del Modal dandole en la pantalla -->
+        <h2>Bienvenido</h2>
+        <p>Ejemplo de Modal</p>
+        <form method="dialog">
+            <button>Cerrar</button>
+        </form>
+    </dialog>
+    <script>
+        const dialog = document.getElementById('myDialog');
+        document.getElementById('openDialog').onclick = () => dialog.showModal();
+    </script>
+</body>
+
+</html>
+
+
