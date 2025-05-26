@@ -1,7 +1,6 @@
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
 const grid = 30;
-//ctx.scale(grid, grid);
 
 const arena = createMatrix(20, 27);
 
@@ -176,59 +175,17 @@ playerReset();
 update();
 
 function resizeCanvas() {
-    const scale = window.devicePixelRatio || 1;
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
+  const scale = window.devicePixelRatio || 1;
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
 
-    canvas.width = width * scale;
-    canvas.height = height * scale;
+  canvas.width = width * scale;
+  canvas.height = height * scale;
 
-    ctx.setTransform(scale, 0, 0, scale, 0, 0);
-    ctx.scale(width / 20, height / 27); // Mantén esto si usas una cuadrícula 20x27
+  ctx.setTransform(scale, 0, 0, scale, 0, 0);
+  ctx.scale(width / 20, height / 27); // Mantén esto si usas una cuadrícula 20x27
 }
 
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-//Para los movimientos tactiles desde el movil
-let touchStartX = null;
-let touchStartY = null;
-let touchEndX = null;
-let touchEndY = null;
-
-canvas.addEventListener("touchstart", function (e) {
-    const touch = e.changedTouches[0];
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
-}, false);
-
-canvas.addEventListener("touchend", function (e) {
-    const touch = e.changedTouches[0];
-    touchEndX = touch.clientX;
-    touchEndY = touch.clientY;
-    handleGesture();
-}, false);
-
-function handleGesture() {
-    const dx = touchEndX - touchStartX;
-    const dy = touchEndY - touchStartY;
-    const absDx = Math.abs(dx);
-    const absDy = Math.abs(dy);
-
-    const swipeThreshold = 30; // Sensibilidad del gesto
-
-    if (absDx < swipeThreshold && absDy < swipeThreshold) {
-        // Toque simple: rotar
-        playerRotate(1);
-    } else if (absDx > absDy) {
-        if (dx > 0) {
-            playerMove(1); // Derecha
-        } else {
-            playerMove(-1); // Izquierda
-        }
-    } else {
-        if (dy > 0) {
-            playerDrop(); // Hacia abajo
-        }
-    }
-}
