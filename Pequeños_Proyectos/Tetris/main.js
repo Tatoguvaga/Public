@@ -1,3 +1,6 @@
+let isPaused = false;
+const toggleBtn = document.getElementById('toggleBtn');
+
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
 const grid = 30;
@@ -153,6 +156,8 @@ let dropInterval = 1000;
 let lastTime = 0;
 
 function update(time = 0) {
+  if (isPaused) return;
+
   const deltaTime = time - lastTime;
   lastTime = time;
   dropCounter += deltaTime;
@@ -163,12 +168,30 @@ function update(time = 0) {
   requestAnimationFrame(update);
 }
 
+function togglePause() {
+  isPaused = !isPaused;
+  toggleBtn.textContent = isPaused ? '▶️ Play' : '⏸️ Pause';
+  if (!isPaused) {
+    lastTime = performance.now(); // evitar salto de tiempo
+    update();
+  }
+}
+
+toggleBtn.addEventListener('click', togglePause);
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'p') {
+    togglePause();
+  }
+});
+
 document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') playerMove(-1);
   else if (event.key === 'ArrowRight') playerMove(1);
   else if (event.key === 'ArrowDown') playerDrop();
   else if (event.key === 'q') playerRotate(-1);
   else if (event.key === 'w') playerRotate(1);
+  else if (event.key === 'ArrowUp') playerRotate(-1);
 });
 
 playerReset();

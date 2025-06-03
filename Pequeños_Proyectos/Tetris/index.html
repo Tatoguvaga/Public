@@ -35,7 +35,8 @@
         }
 
         .mobileControls {
-            display: none;/* Oculto por defecto */
+            display: none;
+            /* Oculto por defecto */
             flex-direction: column;
             align-items: center;
             gap: 10px;
@@ -53,15 +54,30 @@
             font-size: 18px;
             border-radius: 8px;
             cursor: pointer;
-            user-select: none;/* Evita selección de texto */
+            user-select: none;
+            /* Evita selección de texto */
             -webkit-user-select: none;
             -ms-user-select: none;
-            touch-action: manipulation;/* Mejora respuesta táctil */
+            touch-action: manipulation;
+            /* Mejora respuesta táctil */
+        }
+
+        #gameArea {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        #toggleBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            height: fit-content;
+            margin: 0;
         }
 
         @media (max-width: 750px) {
             canvas {
-                max-width: 90vw;
+                max-width: 80vw;
             }
         }
     </style>
@@ -70,6 +86,7 @@
 <body>
 
     <div id="container">
+        <button id="toggleBtn">⏸️ Pause</button>
         <canvas id="tetris" width="600" height="800"></canvas>
 
         <!-- Controles para móviles -->
