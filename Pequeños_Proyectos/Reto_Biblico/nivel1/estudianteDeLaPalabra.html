@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudiante de la Palabra</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+
+</head>
+
+<body>
+
+    <h1>Estudiante de la Palabra 📖</h1><br>
+
+    <div class="container-pregunta">
+        <h2 id="pregunta"></h2>
+        <div class="opciones" id="opciones"></div>
+    </div><br>
+
+    <div class="nivel-texto" id="nivelTexto">Nivel 1 de 10</div>
+    <div class="barra-progreso">
+        <div class="barra-llenado" id="barra"></div>
+    </div>
+
+    <div id="modal">
+        <div id="modalContent"></div>
+    </div>
+
+    <button id="btnSiguienteNivel" style="display: none;" onclick="irAlSiguienteNivel()">Siguiente Nivel</button>
+<script>
+        const preguntas = [
+            { pregunta: "¿Quién construyó el arca?", opciones: ["A. Moisés", "B. Abraham", "C. Noé", "D. David"], correcta: 2 },
+            { pregunta: "¿Dónde nació Jesús?", opciones: ["A. Jerusalén", "B. Belén", "C. Nazaret", "D. Galilea"], correcta: 1 },
+            { pregunta: "¿Cuántos días estuvo Jesús en el desierto?", opciones: ["A. 20", "B. 30", "C. 40", "D. 10"], correcta: 2 },
+            { pregunta: "¿Quién traicionó a Jesús?", opciones: ["A. Pedro", "B. Juan", "C. Tomás", "D. Judas"], correcta: 3 },
+            { pregunta: "¿Cuál fue el primer milagro de Jesús?", opciones: ["A. Sanar un ciego", "B. Caminar sobre el agua", "C. Multiplicar pan", "D. Convertir agua en vino"], correcta: 3 },
+            { pregunta: "¿Cuántos libros tiene la Biblia?", opciones: ["A. 66", "B. 72", "C. 70", "D. 60"], correcta: 0 },
+            { pregunta: "¿Quién escribió muchos Salmos?", opciones: ["A. Moisés", "B. David", "C. Isaías", "D. Elías"], correcta: 1 },
+            { pregunta: "¿Qué dividió Moisés con su vara?", opciones: ["A. El Jordán", "B. El mar Rojo", "C. El Nilo", "D. El Tigris"], correcta: 1 },
+            { pregunta: "¿Quién fue tragado por un gran pez?", opciones: ["A. Jonás", "B. Pablo", "C. Pedro", "D. Elías"], correcta: 0 },
+            { pregunta: "¿Cuántos discípulos tenía Jesús?", opciones: ["A. 10", "B. 12", "C. 14", "D. 15"], correcta: 1 },
+            { pregunta: "¿Qué libro viene después de los Evangelios?", opciones: ["A. Hechos", "B. Romanos", "C. Salmos", "D. Génesis"], correcta: 0 },
+            { pregunta: "¿Quién escribió el libro de Apocalipsis?", opciones: ["A. Pablo", "B. Juan", "C. Pedro", "D. Santiago"], correcta: 1 },
+            { pregunta: "¿Qué milagro hizo Jesús con cinco panes y dos peces?", opciones: ["A. Sanar a un ciego", "B. Resucitar a Lázaro", "C. Alimentar a 5000 personas", "D. Caminar sobre el agua"], correcta: 2 },
+            { pregunta: "¿Quién creó el cielo y la tierra?", opciones: ["A. Moisés", "B. Dios", "C. Jesús", "D. El Espíritu Santo"], correcta: 1 },
+            { pregunta: "¿Qué construyo Noé por orden de Dios?", opciones: ["A. Una torre", "B. Un templo", "C. Un arca", "D. Una ciudad"], correcta: 2 },
+            { pregunta: "¿Cómo murio Jesús?", opciones: ["A. En una batalla", "B. En la cruz", "C. En un naufragio", "D. Por envenenamiento"], correcta: 1 },
+            { pregunta: "¿Cómo se llamaban los primeros dos seres humanos?", opciones: ["A. Adán y Eva", "B. Abraham y Sara", "C. Moisés y Miriam", "D. David y Betsabé"], correcta: 0 },
+            { pregunta: "¿En cuántos días creó Dios el mundo?", opciones: ["A. 5", "B. 6", "C. 7", "D. 8"], correcta: 1 },
+            { pregunta: "¿Qué animal habló con Eva en el jardin del Edén?", opciones: ["A. Un león", "B. Una serpiente", "C. Un águila", "D. Un cordero"], correcta: 1 },
+            { pregunta: "¿Quién fue la madre de Jesús?", opciones: ["A. María", "B. Marta", "C. Ana", "D. Isabel"], correcta: 0 },
+            { pregunta: "¿Dónde crecio Jésús?", opciones: ["A. Jerusalén", "B. Belén", "C. Nazaret", "D. Galilea"], correcta: 2 },
+            { pregunta: "¿Qué oficio tenía Jesús?", opciones: ["A. Comerciante", "B. Pescador", "C. Agricultor", "D. Carpintero"], correcta: 3 },
+            { pregunta: "¿Quién nego a Jesús tres veces?", opciones: ["A. Juan", "B. Pedro", "C. Santiago", "D. Andrés"], correcta: 1 },
+            { pregunta: "¿Cómo se llama el libro de Dios", opciones: ["A. El Corán", "B. La Biblia", "C. El Talmud", "D. El Bhagavad Gita"], correcta: 1 },
+            { pregunta: "¿Cuál es el ultimo libro de la biblia?", opciones: ["A. Génesis", "B. Salmos", "C. Apocalipsis", "D. Hechos"], correcta: 2 },
+            { pregunta: "¿Qué niño mato a un gigante con una piedra?", opciones: ["A. Moisés", "B. Josué", "C. Salomón", "D. David"], correcta: 3 },
+            { pregunta: "¿Quién era el amigo que Jesús resucitó?", opciones: ["A. Pedro", "B. Juan", "C. Lázaro", "D. Tomás"], correcta: 2 },
+            { pregunta: "¿Que hizo Dios en el septimo día de la creación?", opciones: ["A. Creó al hombre", "B. Descansó", "C. Creó a los animales", "D. Creó las plantas"], correcta: 1 },
+            { pregunta: "¿Quién recibio los diez mandamientos?", opciones: ["A. Abraham", "B. Moisés", "C. David", "D. Salomón"], correcta: 1 },
+            { pregunta: "¿Cómo se llama el gigante que pelio con David?", opciones: ["A. Goliat", "B. Sansón", "C. Saúl", "D. Filisteo"], correcta: 0 },
+            { pregunta: "¿Qué ciudad fue destruida junto con Sodoma?", opciones: ["A. Jericó", "B. Nínive", "C. Gomorra", "D. Babilonia"], correcta: 2 },
+            { pregunta: "¿Cuántas veces negó Pedro a Jesús antes de que cantara el gallo?", opciones: ["A. 1", "B. 2", "C. 3", "D. 4"], correcta: 2 }
+        ];
+
+        function irAlSiguienteNivel() {
+            window.location.href = "/nivel2/guerreroDeLaFe.html"; 
+        }
+    </script>
+    <script src="/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sabio del Reino</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+
+</head>
+
+<body>
+
+    <h1>Sabio del Reino 👑</h1><br>
+
+    <div class="container-pregunta">
+        <h2 id="pregunta"></h2>
+        <div class="opciones" id="opciones"></div>
+    </div><br>
+
+    <div class="nivel-texto" id="nivelTexto">Nivel 1 de 10</div>
+    <div class="barra-progreso">
+        <div class="barra-llenado" id="barra"></div>
+    </div>
+
+    <div id="modal">
+        <div id="modalContent"></div>
+    </div>
+
+    <button id="btnSiguienteNivel" style="display: none;"
+        onclick="window.location.href = '/premio.html'">Premio</button>
+
+    <script>
+        const preguntas = [
+            { pregunta: "¿Quién fue el primer mártir cristiano?", opciones: ["A. Esteban", "B. Pablo", "C. Pedro", "D. Juan"], correcta: 0 },
+            { pregunta: "¿Quién fue el profeta que vio una visión de un valle de huesos secos?", opciones: ["A. Oseas", "B. Daniel", "C. Ezequiel", "D. Amós"], correcta: 2 },
+            { pregunta: "¿Quién fue el profeta que desafió a Acab y Jezabel?", opciones: ["A. Jeremías", "B. Eliseo", "C. Isaías", "D. Elías"], correcta: 3 },
+            { pregunta: "¿Cuál es el fruto del Espíritu que aparece en primer lugar en Gálatas 5:22?", opciones: ["A. Amor", "B. Gozo", "C. Paz", "D. Paciencia"], correcta: 0 },
+            { pregunta: "¿Quién fue el profeta que vio una visión de un carro de fuego?", opciones: ["A. Isaías", "B. Jeremías", "C. Ezequiel", "D. Elías"], correcta: 3 },
+            { pregunta: "¿Qué rey tuvo un sueño con una estatua hecha de varios materiales?", opciones: ["A. Nabucodonosor", "B. Darío", "C. Ciro", "D. Belsasar"], correcta: 0 },
+            { pregunta: "¿Qué juez hizo un voto a Dios y luego tuvo que entregar a su hija?", opciones: ["A. Débora", "B. Gedeón", "C. Jefté", "D. Sansón"], correcta: 2 },
+            { pregunta: "¿Cuál fue el pecado que causó la caída de Ananías y Safira?", opciones: ["A. Robo", "B. Mentira", "C. Idolatría", "D. Adulterio"], correcta: 1 },
+            { pregunta: "¿Qué rey comió pasto como los bueyes por siete años?", opciones: ["A. Nabucodonosor", "B. Ciro", "C. Darío", "D. Belsasar"], correcta: 0 },
+            { pregunta: "¿Cuál es el salmo más largo de la Biblia?", opciones: ["A. Salmo 23", "B. Salmo 119", "C. Salmo 51", "D. Salmo 100"], correcta: 1 },
+            { pregunta: "¿Quién fue la única mujer que gobernó como reina en Judá?", opciones: ["A. Dalila", "B. Jezabel", "C. Betsabé", "D. Atalía"], correcta: 3 },
+            { pregunta: "¿Qué apóstol fue también médico?", opciones: ["A. Juan", "B. Mateo", "C. Lucas", "D. Pedro"], correcta: 2 },
+            { pregunta: "¿Quién fue el rey que escribió muchos Proverbios?", opciones: ["A. David", "B. Salomón", "C. Ezequías", "D. Josías"], correcta: 1 },
+            { pregunta: "¿Quién fue el rey que vio la escritura en la pared durante una fiesta?", opciones: ["A. Nabucodonosor", "B. Belsasar", "C. Ciro", "D. Darío"], correcta: 1 },
+            { pregunta: "¿Quién fue el rey que construyó el segundo templo en Jerusalén?", opciones: ["A. Salomón", "B. Zorobabel", "C. Herodes", "D. Ciro"], correcta: 1 },
+            { pregunta: "¿Quién fue el rey que tuvo una visión de un árbol grande que fue cortado?", opciones: ["A. Nabucodonosor", "B. Ciro", "C. Darío", "D. Belsasar"], correcta: 0 },
+            { pregunta: "¿Quién fue el profeta que vio una visión de un candelabro y dos olivos?", opciones: ["A. Ezequiel", "B. Zacarías", "C. Isaías", "D. Jeremías"], correcta: 1 },
+            { pregunta: "¿Quién fue el profeta que vio una visión de un hombre con un cordel de medir?", opciones: ["A. Ezequiel", "B. Zacarías", "C. Isaías", "D. Jeremías"], correcta: 1 },
+            { pregunta: "¿Quién fue el profeta que vio una visión de un carro tirado por caballos?", opciones: ["A. Ezequiel", "B. Zacarías", "C. Isaías", "D. Jeremías"], correcta: 1 },
+            { pregunta: "¿Qué salmo fue compuesto por Moisés?", opciones: ["A. Salmo 92", "B. Salmo 91", "C. Salmo 90", "D. Salmo 93"], correcta: 2 },
+            { pregunta: "¿Cuál es el único libro del Nuevo Testamento que no menciona la muerte de Jesús?", opciones: ["A. Lucas", "B.3 Juan", "C. Romanos", "D. Gálatas"], correcta: 1 },
+            { pregunta: "¿Qué rey consultó a una adivina antes de su muerte?", opciones: ["A. Ezequías", "B. David", "C. Salomón", "D. Saúl"], correcta: 3 },
+            { pregunta: "¿Qué personaje de Israel derrotó a los madianitas con solo 300 hombres?", opciones: ["A. Sansón", "B. Gedeón", "C. Moisés", "D. Josué"], correcta: 1 },
+            { pregunta: "¿Cuál es el único de los evangelistas que también escribió un libro profético?", opciones: ["A. Mateo", "B. Marcos", "C. Lucas", "D. Juan"], correcta: 3 },
+            { pregunta: "¿Quién reemplazó a Judas Iscariote como apóstol?", opciones: ["A. Pablo", "B. Bernabé", "C. Matías", "D. Silas"], correcta: 2 },
+            { pregunta: "¿Qué general sirio fue sanado de lepra tras bañarse en el Jordán?", opciones: ["A. Nabucodonosor", "B. Ciro", "C. Naamán", "D. Darío"], correcta: 2 },
+            { pregunta: "¿Qué libro de la Biblia menciona más veces la palabra “sabiduría”?", opciones: ["A. Job", "B. Eclesiastés", "C. Salmos", "D. Proverbios"], correcta: 3 },
+            { pregunta: "¿Qué mujer del Antiguo Testamento mató a un general enemigo clavándole una estaca en la cien?", opciones: ["A. Jael", "B. Débora", "C. Ana", "D. Rut"], correcta: 0 },
+            { pregunta: "¿Cuántos capítulos tiene el libro de Isaías?", opciones: ["A. 50", "B. 66", "C. 40", "D. 55"], correcta: 1 },
+            { pregunta: "¿Quién interpretó la escritura en la pared durante el banquete del rey Belsasar?", opciones: ["A. Isaías", "B. Ezequiel", "C. Jeremías", "D. Daniel"], correcta: 3 },
+            { pregunta: "¿Cuál fue el castigo que recibió Moisés por golpear la roca en lugar de hablarle?", opciones: ["A. No entrar a la Tierra Prometida", "B. Ser expulsado del pueblo", "C. Morir en el desierto", "D. Ser castigado con lepra"], correcta: 0 },
+            { pregunta: "¿Qué discípulo fue encarcelado con Pedro y liberado milagrosamente?", opciones: ["A. Silas", "B. Santiago", "C. Pablo", "D. Juan"], correcta: 3 },
+            { pregunta: "¿Quién fue el profeta que se escondió en una cueva tras huir de Jezabel?", opciones: ["A. Isaías", "B. Jeremías", "C. Ezequiel", "D. Elías"], correcta: 3 },
+            { pregunta: "¿A quién llamó Dios tres veces mientras dormía en el templo?", opciones: ["A. Salomón", "B. David", "C. Samuel", "D. Elías"], correcta: 2 }
+        ];
+
+    </script>
+    <script src="/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guerrero de la Fé</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+
+</head>
+
+<body>
+
+    <h1>Guerrero de la Fe 🛡️</h1><br>
+
+    <div class="container-pregunta">
+        <h2 id="pregunta"></h2>
+        <div class="opciones" id="opciones"></div>
+    </div><br>
+
+    <div class="nivel-texto" id="nivelTexto">Nivel 1 de 10</div>
+    <div class="barra-progreso">
+        <div class="barra-llenado" id="barra"></div>
+    </div>
+
+    <div id="modal">
+        <div id="modalContent"></div>
+    </div>
+
+    <button id="btnSiguienteNivel" style="display: none;" onclick="irAlSiguienteNivel()">Siguiente Nivel</button>
+
+<script>
+        const preguntas = [
+            { pregunta: "¿Qué rey construyó el primer templo en Jerusalén?", opciones: ["A. David", "B. Salomón", "C. Ezequías", "D. Josías"], correcta: 1 },
+            { pregunta: "¿Qué profeta desafió a los profetas de Baal?", opciones: ["A. Elías", "B. Eliseo", "C. Isaías", "D. Jeremías"], correcta: 0 },
+            { pregunta: "¿Qué hizo Jesús en la boda de Caná?", opciones: ["A. Sanó a un enfermo", "B. Resucitó a un muerto", "C. Multiplicó el vino", "D. Caminó sobre el agua"], correcta: 2 },
+            { pregunta: "¿Qué mujer escondió a los espías israelitas en Jericó?", opciones: ["A. Débora", "B. Ana", "C. Rut", "D. Rahab"], correcta: 3 },
+            { pregunta: "¿Quién fue el primer rey de Israel?", opciones: ["A. Saúl", "B. David", "C. Salomón", "D. Ezequías"], correcta: 0 },
+            { pregunta: "¿En qué libro de la Biblia encontramos los Diez Mandamientos por primera vez?", opciones: ["A. Números", "B. Levítico", "C. Éxodo", "D. Deuteronomio"], correcta: 2 },
+            { pregunta: "¿Qué discípulo era recaudador de impuestos antes de seguir a Jesús?", opciones: ["A. Pedro", "B. Mateo", "C. Juan", "D. Santiago"], correcta: 1 },
+            { pregunta: "¿Qué instrumento tocaba David para calmar a Saúl?", opciones: ["A. Tambor", "B. Flauta", "C. Arpa", "D. Lira"], correcta: 2 },
+            { pregunta: "¿Quién interpretó los sueños del faraón en Egipto?", opciones: ["A. Moisés", "B. Daniel", "C. José", "D. Samuel"], correcta: 2 },
+            { pregunta: "¿Quién fue la madre de Samuel?", opciones: ["A. Ana", "B. Sara", "C. Rebeca", "D. Raquel"], correcta: 0 },
+            { pregunta: "¿Qué rey persa permitió a los judíos regresar a Jerusalén?", opciones: ["A. Nabucodonosor", "B. Darío", "C. Artajerjes", "D. Ciro"], correcta: 3 },
+            { pregunta: "¿Quién fue el apóstol conocido como el 'discípulo amado'?", opciones: ["A. Pedro", "B. Juan", "C. Santiago", "D. Andrés"], correcta: 1 },
+            { pregunta: "¿Quién escribió la mayoría de las cartas del Nuevo Testamento?", opciones: ["A. Pedro", "B. Juan", "C. Pablo", "D. Santiago"], correcta: 2 },
+            { pregunta: "¿Dónde recibió Moisés los Diez Mandamientos?", opciones: ["A. Monte Sinaí", "B. Monte Ararat", "C. Monte Nebo", "D. Monte Hermón"], correcta: 0 },
+            { pregunta: "¿Quién fue la madre de Juan el Bautista?", opciones: ["A. María", "B. Elisabet", "C. Ana", "D. Sara"], correcta: 1 },
+            { pregunta: "¿Cuántos días y noches llovió durante el diluvio?", opciones: ["A. 20", "B. 30", "C. 40", "D. 50"], correcta: 2 },
+            { pregunta: "¿Qué libro de la Biblia se conoce por sus proverbios y sabiduría?", opciones: ["A. Salmos", "B. Proverbios", "C. Eclesiastés", "D. Job"], correcta: 1 },
+            { pregunta: "¿Cuál fue la señal del pacto entre Dios y Noé?", opciones: ["A. Arca", "B. Paloma", "C. Cordero", "D. Arco iris"], correcta: 3 },
+            { pregunta: "¿Quién dijo “He aquí la sierva del Señor; hágase conmigo conforme a tu palabra”?", opciones: ["A. Ana", "B. María", "C. Rebeca", "D. Sara"], correcta: 1 },
+            { pregunta: "¿Qué apóstol tuvo una visión de un lienzo que bajaba del cielo con animales?", opciones: ["A. Pablo", "B. Juan", "C. Pedro", "D. Felipe"], correcta: 2 },
+            { pregunta: "¿Qué hombre sabio resolvió una disputa entre dos mujeres por un bebé?", opciones: ["A. Salomón", "B. David", "C. Moisés", "D. Samuel"], correcta: 0 },
+            { pregunta: "¿Cuál fue la última plaga que Dios envió a Egipto?", opciones: ["A. Langostas", "B. Peste", "C. Muerte de los primogénitos", "D. Tinieblas"], correcta: 2 },
+            { pregunta: "¿Cuál es el primer libro del Nuevo Testamento?", opciones: ["A. Mateo", "B. Marcos", "C. Lucas", "D. Juan"], correcta: 0 },
+            { pregunta: "¿A qué profeta se le apareció Dios en una zarza ardiente?", opciones: ["A. Elías", "B. Moisés", "C. Jeremías", "D. Ezequiel"], correcta: 1 },
+            { pregunta: "¿Quién fue la mujer que se convirtió en sal por mirar atrás?", opciones: ["A. La esposa de Noé", "B. La esposa de José", "C. La esposa de Moisés", "D. La esposa de Lot"], correcta: 3 },
+            { pregunta: "¿Cuál de estos libros es considerado un libro profético?", opciones: ["A. Salmos", "B. Proverbios", "C. Ezequiel", "D. Génesis"], correcta: 2 },
+            { pregunta: "¿Qué discípulo dudó de la resurrección de Jesús hasta verlo?", opciones: ["A. Pedro", "B. Juan", "C. Tomás", "D. Andrés"], correcta: 2 },
+            { pregunta: "¿Quién escribió el libro de Lamentaciones?", opciones: ["A. Jeremías", "B. Isaías", "C. Ezequiel", "D. Daniel"], correcta: 0 },
+            { pregunta: "¿Qué mujer del Antiguo Testamento trabajó recogiendo espigas?", opciones: ["A. Lea", "B. Noemí", "C. Raquel", "D. Rut"], correcta: 3 },
+            { pregunta: "¿Quién fue el profeta que subió al cielo en un carro de fuego?", opciones: ["A. Eliseo", "B. Elías", "C. Isaías", "D. Jeremías"], correcta: 1 },
+            { pregunta: "¿Qué alimento les proveyó Dios a los israelitas en el desierto?", opciones: ["A. Pan", "B. Maná", "C. Carne", "D. Frutas"], correcta: 1 }
+        ];
+
+        function irAlSiguienteNivel() {
+            window.location.href = "/nivel3/sabioDelReino.html"; 
+        }
+        </script>
+    <script src="/main.js"></script>
+
+</body>
+
+</html>

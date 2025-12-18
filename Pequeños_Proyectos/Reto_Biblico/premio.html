@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premio</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            width: 400px; 
+            height: 350px;
+        }
+
+        .card {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            animation: fadeInUp 1s ease forwards;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        h1 {
+            color: #ffd700;
+            font-size: 1.5em;
+        }
+
+        button {
+            margin-top: 60px;
+            background-color: #ffd700;
+            color: #000;
+            transition: background 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container-icon {
+                margin: 0%;
+            }
+
+            .card {
+                width: 70%;
+            }
+
+            button {
+                margin-top: 5px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-icon">
+        <img src="./img/jesus.gif"><br>
+    </div>
+    
+    <div class="card">
+        <h1 >¡Felicidades!</h1>
+        <p>Has completado todos los niveles del Reto Bíblico.</p>
+        <p>“Lámpara es a mis pies tu palabra, y lumbrera a mi camino.” - Salmo 119:105</p>
+        <button onclick="window.location.href='index.html'">Iniciar de Nuevo</button>
+    </div>
+</body>
+
+</html>

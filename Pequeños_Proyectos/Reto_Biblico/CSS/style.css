@@ -1,0 +1,272 @@
+/* Importación de fuentes y de tailwind*/
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/*   Reset general y estilos base */
+body {
+    font-family: "Funnel Sans", sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 26px;
+    background: rgba(240, 145, 70, 0.7);
+    color: #fff;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Icono principal */
+.container-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    padding: 30px;
+}
+
+.container-icon img {
+    border: none;
+    border-radius: 50%;
+}
+
+/* Encabezado */
+.container-header {
+    background: rgb(162, 48, 4);
+    font-size: 26px;
+    border: none;
+    border-radius: 10px;
+    margin: 60px;
+    padding: 24px;
+}
+
+/* Botones */
+button {
+    background: #fff;
+    color: rgb(162, 48, 4);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+    background: rgb(18, 26, 40);
+    color: #fff;
+}
+
+.start-button a {
+    color: black;
+}
+
+.start-button a:hover {
+    color: white;
+}
+
+/* Botón para abrir el diálogo */
+.openDialog {
+    font-size: 18px;
+    padding: 6px;
+    width: fit-content;
+    /* Se ajusta al contenido */
+}
+
+/* Contenedor de instrucciones */
+.container-instructions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+/* Diálogo modal */
+.container-dialog {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+dialog {
+    border: none;
+    padding: 31px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+dialog[open] {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pie de página */
+.container-footer {
+    width: 100%;
+    background-color: black;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Sesion de preguntas */
+.container-pregunta {
+    background: #a23004;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.opciones {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.opciones button {
+    width: 400px;
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.correcta {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.incorrecta {
+    background-color: #f44336;
+    color: white;
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#modalContent {
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+.modal-correcto {
+    color: green;
+}
+
+.modal-incorrecto {
+    color: red;
+}
+
+.barra-progreso {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 700px;
+    background-color: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 1.5rem;
+}
+
+.barra-llenado {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.5s ease-in-out;
+}
+
+.nivel-texto {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Responsive - Pantallas pequeñas */
+@media (max-width: 600px) {
+
+    body {
+        height: 100vh;
+    }
+
+    .container-header, 
+    .container-instructions,
+    .container-dialog {
+        font-size: 18px;
+        margin: 10px;
+        padding: 7px;
+    }
+
+    .container-pregunta {
+        padding-top: 0%;
+    }
+
+    .container-footer {
+        font-size: 12px;
+        padding: 1em;
+        margin-bottom: 0%;
+    }
+
+    .container-icon img {
+        width: 80vw;
+        height: auto;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+
+    dialog {
+        font-size: 15px;
+        width: 80%;
+    }
+
+    .container-pregunta {
+        width: 80%;
+    }
+
+    .opciones button {
+        width: 90%;
+    }
+
+    .barra-progreso {
+        width: 80%;
+    }
+
+
+}
